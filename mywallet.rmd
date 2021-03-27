@@ -289,7 +289,3 @@ currentTime <- `attr<-`(Sys.time(),"tzone","CET")
 currentTime <- format(currentTime, "%d-%m-%Y at %H:%M")
 ```
 <div class="footer">`r paste0(greyspan, currentTime, "</span>")`</div>
-
-
-<div class="footer">`r paste0(greyspan, format(`attr<-`(Sys.time(),"tzone","CET"), "%d-%m-%Y at %H:%M"), "</span>")`</div>
-

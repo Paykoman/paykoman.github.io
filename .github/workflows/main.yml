@@ -25,11 +25,20 @@ jobs:
     - uses: r-lib/actions/setup-r@master
     - uses: r-lib/actions/setup-pandoc@v1
 
-    # Set-up R
+    - name: Cache R packages
+      id: cache
+      uses: actions/cache@v2
+      with:
+        path: ${{ env.R_LIBS_USER }}
+        key: ${{ runner.os }}-shinydoc
+        restore-keys: |
+          ${{ runner.os }}-
+          
     - name: Install packages
+      if: steps.cache.outputs.cache-hit != 'true'
       run: |
         R -e 'install.packages(c("rmarkdown", "kableExtra", "data.table", "magrittr", "RJSONIO"))'
-    # Run R script
+        
     - name: Build
       run: Rscript wallet_build.R
       
@@ -39,7 +48,7 @@ jobs:
         git config --local user.name actions-user
         git config --local user.email "actions@github.com"
         git add wallets/*
-        git commit -am "GH ACTION Headlines $(date)"
+        git commit -am "Wallet updated $(date)"
         git push origin
       env:
         REPO_KEY: ${{secrets.GITHUB_TOKEN}}

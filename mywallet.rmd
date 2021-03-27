@@ -1,0 +1,288 @@
+---
+title: "My Wallet"
+output:
+    html_document:
+        theme: lumen
+        css: crypto.css
+        self_contained: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+# Rmarkdown options
+knitr::opts_chunk$set(echo = FALSE, comment = "", dev = "svglite", fig.ext = ".svg")
+options(warn = -1)
+
+# Libraries ----------------------------------------------------------------------------------------
+library(kableExtra)
+library(data.table)
+library(magrittr)
+library(RJSONIO)
+
+# https://github.com/rogerjbos/cryptor
+# https://github.com/amrrs/coinmarketcapr
+
+# Read wallet
+W_EUR <- fread("wallet.csv")
+
+```
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+```{r}
+# CUstum functions ---------------------------------------------------------------------------------
+round2 <- function(x) format(round(x, 2), nsmall = 2)
+
+
+# HTML colors --------------------------------------------------------------------------------------
+greenspan <- "<span style='color: #228B22 !important;'>"
+redspan <- "<span style='color: #CD2626 !important;'>"
+greyspan <- "<span style='color: #A8A8A8 !important;'>"
+
+
+# URL-API ------------------------------------------------------------------------------------------
+apikey <- "&CMC_PRO_API_KEY=6f8eb99f-1de9-4566-ae06-b423c3d9fe15"
+cmcURL <- "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?"
+
+
+# Extract ------------------------------------------------------------------------------------------
+URL <- paste0(cmcURL, "convert=EUR&symbol=", paste0(W_EUR$symbol, collapse = ","), apikey)
+URL <- gsub(" ", "", URL)
+
+js <- fromJSON(URL)$data
+
+prices <- sapply(W_EUR$symbol, function(coin) {
+  js[[coin]]$quote$EUR$price
+})
+
+# change1h <- sapply(W_EUR$symbol, function(coin) {
+#   js[[coin]]$quote$EUR$percent_change_1h
+# })
+# 
+# change24h <- sapply(W_EUR$symbol, function(coin) {
+#   js[[coin]]$quote$EUR$percent_change_24h
+# })
+# 
+# change7d <- sapply(W_EUR$symbol, function(coin) {
+#   js[[coin]]$quote$EUR$percent_change_7d
+# })
+
+
+# USD to EUR exchange rate (according to CMC)
+URL2 <- paste0(cmcURL, "convert=USD&symbol=BTC", apikey)
+URL2 <- gsub(" ", "", URL2)
+
+js2 <- fromJSON(URL2)$data
+
+BTC_USD <- js2$BTC$quote$USD$price
+BTC_EUR <- js$BTC$quote$EUR$price
+
+USDEUR <- BTC_EUR / BTC_USD # 1 EUR = 1 USDEUR
+
+
+# Holdings -----------------------------------------------------------------------------------------
+W_EUR[, coins_initial := wallet_initial/hold]
+W_EUR[, coins_current := prices[symbol], symbol]
+W_EUR[, wallet_current := coins_current * hold]
+W_EUR[, profit_net := wallet_current - wallet_initial]
+W_EUR[, profit_rate := profit_net/wallet_initial * 100]
+W_EUR[, wallet_initial_weight := wallet_initial / sum(wallet_initial) * 100]
+W_EUR[, wallet_current_weight := wallet_current / sum(wallet_current) * 100]
+W_EUR[, coinLabel := paste0(
+  "<img src='img/", symbol, ".webp' style='width:18px;margin-right:10px'>",
+  "<span title='", where, "'>", coin, "</span> ",
+  greyspan, "(<a href='https://www.coingecko.com/en/coins/", tolower(gsub(" ", "-", coin)),
+  "' target='_blank'>", symbol, "</a>)</span>"
+)]
+
+W_EUR <- W_EUR[, .(coinLabel, hold, coins_initial, coins_current, wallet_initial, wallet_current,
+                   wallet_initial_weight, wallet_current_weight, profit_net, profit_rate)]
+
+W_USD <- W_EUR[, .(coinLabel, hold,
+                   coins_initial = coins_initial/USDEUR, coins_current = coins_current/USDEUR,
+                   wallet_initial = wallet_initial/USDEUR, wallet_current = wallet_current/USDEUR,
+                   wallet_initial_weight, wallet_current_weight,
+                   profit_net = profit_net/USDEUR, profit_rate)]
+
+W_EUR <- W_EUR[order(-profit_net)]
+W_USD <- W_USD[order(-profit_net)]
+
+
+# Formated Holdings --------------------------------------------------------------------------------
+WF_EUR <- copy(W_EUR)
+WF_EUR[, hold := round2(hold)]
+WF_EUR[, coins_initial := ifelse(coins_initial < 10, round(coins_initial, 2), round(coins_initial, 0))]
+WF_EUR[, coins_current := ifelse(coins_current < 10, round(coins_current, 2), round(coins_current, 0))]
+WF_EUR[, wallet_initial := round(wallet_initial, 0)]
+WF_EUR[, wallet_current := round(wallet_current, 0)]
+# WF_EUR[, wallet_initial_weight := ifelse(wallet_initial_weight < 1, round2(wallet_initial_weight),
+#                                          round(wallet_initial_weight, 0)) %>% paste0("%")]
+# WF_EUR[, wallet_current_weight := ifelse(wallet_current_weight < 1, round2(wallet_current_weight),
+#                                          round(wallet_current_weight, 0)) %>% paste0("%")]
+WF_EUR[wallet_initial_weight < 1,  wallet_initial_weight := round2(wallet_initial_weight)]
+WF_EUR[wallet_initial_weight == 0, wallet_initial_weight := 0]
+WF_EUR[wallet_initial_weight >= 1, wallet_initial_weight := round(wallet_initial_weight, 0)]
+WF_EUR[, wallet_initial_weight := paste0(wallet_initial_weight, "%")]
+WF_EUR[wallet_current_weight < 1,  wallet_current_weight := round2(wallet_current_weight)]
+WF_EUR[wallet_current_weight == 0, wallet_current_weight := 0]
+WF_EUR[wallet_current_weight >= 1, wallet_current_weight := round(wallet_current_weight, 0)]
+WF_EUR[, wallet_current_weight := paste0(wallet_current_weight, "%")]
+
+
+WF_EUR[, profit_net := round(profit_net, 0)]
+WF_EUR[, profit_rate := round(profit_rate, 0) %>% paste0("%")]
+
+cols <- names(WF_EUR)
+WF_EUR[, (cols) := lapply(.SD, as.character), .SDcols = cols]
+
+# Conditional colors
+WF_EUR[, profit_net := ifelse(W_EUR$profit_net > 0, 
+                              paste0(greenspan, profit_net, "</span>"),
+                              paste0(redspan, profit_net, "</span>"))]
+WF_EUR[, profit_rate := ifelse(W_EUR$profit_rate > 0, 
+                               paste0(greenspan, profit_rate, "</span>"),
+                               paste0(redspan, profit_rate, "</span>"))]
+
+# Fix BCH
+WF_EUR[coinLabel %like% "BCH", profit_rate := "–"]
+
+# Add total
+WFT_EUR <- data.table(coinLabel = "Total",
+                      hold = " ",
+                      coins_initial = " ",
+                      coins_current = " ",
+                      wallet_initial = round(sum(W_EUR$wallet_initial), 0),
+                      wallet_current = round(sum(W_EUR$wallet_current), 0),
+                      wallet_initial_weight = " ",
+                      wallet_current_weight = " ",
+                      profit_net = round(sum(W_EUR$profit_net), 0))
+
+WFT_EUR[, profit_rate := round(profit_net/wallet_initial * 100, 0)]
+WFT_EUR[, profit_net := ifelse(sum(W_EUR$profit_net) > 0,
+                               paste0(greenspan, profit_net, "€</span>"),
+                               paste0(redspan, profit_net, "€</span>"))]
+WFT_EUR[, profit_rate := ifelse(sum(W_EUR$profit_net) > 0,
+                                paste0(greenspan, profit_rate, "%</span>"),
+                                paste0(redspan, profit_rate, "%</span>"))]
+
+cols <- names(WFT_EUR)
+WFT_EUR[, (cols) := lapply(.SD, as.character), .SDcols = cols]
+WFT_EUR[, wallet_initial := paste0(wallet_initial, "€")]
+WFT_EUR[, wallet_current := paste0(wallet_current, "€")]
+cols <- names(WFT_EUR)
+WFT_EUR[, (cols) := lapply(.SD, function(x) paste0("<b>", x, "</b>")), .SDcols = cols]
+
+WF_EUR <- rbind(WF_EUR, WFT_EUR)
+
+# Wallet in USD
+WF_USD <- copy(W_USD)
+WF_USD[, hold := round2(hold)]
+WF_USD[, coins_initial := ifelse(coins_initial < 10, round2(coins_initial), round(coins_initial, 0))]
+WF_USD[, coins_current := ifelse(coins_current < 10, round2(coins_current), round(coins_current, 0))]
+WF_USD[, wallet_initial := round(wallet_initial, 0)]
+WF_USD[, wallet_current := round(wallet_current, 0)]
+WF_USD[wallet_initial_weight < 1,  wallet_initial_weight := round2(wallet_initial_weight)]
+WF_USD[wallet_initial_weight == 0, wallet_initial_weight := 0]
+WF_USD[wallet_initial_weight >= 1, wallet_initial_weight := round(wallet_initial_weight, 0)]
+WF_USD[, wallet_initial_weight := paste0(wallet_initial_weight, "%")]
+WF_USD[wallet_current_weight < 1,  wallet_current_weight := round2(wallet_current_weight)]
+WF_USD[wallet_current_weight == 0, wallet_current_weight := 0]
+WF_USD[wallet_current_weight >= 1, wallet_current_weight := round(wallet_current_weight, 0)]
+WF_USD[, wallet_current_weight := paste0(wallet_current_weight, "%")]
+WF_USD[, profit_net := round(profit_net, 0)]
+WF_USD[, profit_rate := round(profit_rate, 0) %>% paste0("%")]
+
+cols <- names(WF_USD)
+WF_USD[, (cols) := lapply(.SD, as.character), .SDcols = cols]
+
+# Conditional colors
+WF_USD[, profit_net := ifelse(W_USD$profit_net > 0, 
+                              paste0(greenspan, profit_net, "</span>"),
+                              paste0(redspan, profit_net, "</span>"))]
+WF_USD[, profit_rate := ifelse(W_USD$profit_rate > 0, 
+                               paste0(greenspan, profit_rate, "</span>"),
+                               paste0(redspan, profit_rate, "</span>"))]
+
+# Fix BCH
+WF_USD[coinLabel %like% "BCH", profit_rate := "–"]
+
+# Add total
+WFT_USD <- data.table(coinLabel = "Total",
+                      hold = " ",
+                      coins_initial = " ",
+                      coins_current = " ",
+                      wallet_initial = round(sum(W_USD$wallet_initial), 0),
+                      wallet_current = round(sum(W_USD$wallet_current), 0),
+                      wallet_initial_weight = " ",
+                      wallet_current_weight = " ",
+                      profit_net = round(sum(W_USD$profit_net), 0))
+
+WFT_USD[, profit_rate := round(profit_net/wallet_initial * 100, 0)]
+WFT_USD[, profit_net := ifelse(sum(W_EUR$profit_net) > 0,
+                               paste0(greenspan, profit_net, "\\$</span>"),
+                               paste0(redspan, profit_net, "\\$</span>"))]
+WFT_USD[, profit_rate := ifelse(sum(W_EUR$profit_net) > 0,
+                                paste0(greenspan, profit_rate, "%</span>"),
+                                paste0(redspan, profit_rate, "%</span>"))]
+
+cols <- names(WFT_USD)
+WFT_USD[, (cols) := lapply(.SD, as.character), .SDcols = cols]
+WFT_USD[, wallet_initial := paste0(wallet_initial, "\\$")]
+WFT_USD[, wallet_current := paste0(wallet_current, "\\$")]
+cols <- names(WFT_USD)
+WFT_USD[, (cols) := lapply(.SD, function(x) paste0("<b>", x, "</b>")), .SDcols = cols]
+
+WF_USD <- rbind(WF_USD, WFT_USD)
+
+# Column order
+setcolorder(W_EUR, c("coinLabel", "hold", "coins_initial", "coins_current",
+                     "wallet_initial_weight", "wallet_current_weight",
+                     "wallet_initial", "wallet_current", "profit_net", "profit_rate"))
+setcolorder(WF_EUR, c("coinLabel", "hold", "coins_initial", "coins_current",
+                      "wallet_initial_weight", "wallet_current_weight",
+                      "wallet_initial", "wallet_current", "profit_net", "profit_rate"))
+setcolorder(W_USD, c("coinLabel", "hold", "coins_initial", "coins_current",
+                     "wallet_initial_weight", "wallet_current_weight",
+                     "wallet_initial", "wallet_current", "profit_net", "profit_rate"))
+setcolorder(WF_USD, c("coinLabel", "hold", "coins_initial", "coins_current",
+                      "wallet_initial_weight", "wallet_current_weight",
+                      "wallet_initial", "wallet_current", "profit_net", "profit_rate"))
+```
+
+<button title='`r sprintf("1$ = %.2f€", USDEUR)`'>EUR/USD</button>
+
+<script>
+$(document).ready(function(){
+$("button").click(function(){
+$(".visible, .invisible").toggleClass("visible invisible");
+});
+});
+</script>
+
+<div class='visible'>
+```{r}
+cols <- c(" ", "hold", rep(c("initial", "current"), 3), "net", "rate")
+
+WF_EUR %>% 
+  kable(format = "html", escape = FALSE, align = c("l", rep("r", ncol(W_EUR) - 1)), 
+        col.names = cols) %>% 
+  kable_styling(bootstrap_options = c("striped"), font_size = 18) %>% 
+  add_header_above(c(" ", " ", "coins value" = 2, "wallet weight" = 2,
+                     "wallet value" = 2, "profit" = 2), align = "r")
+```
+</div>
+
+<div class='invisible'>
+```{r}
+WF_USD %>% 
+  kable(format = "html", escape = FALSE, align = c("l", rep("r", ncol(W_EUR) - 1)), 
+        col.names = cols) %>% 
+  kable_styling(bootstrap_options = c("striped"), font_size = 18) %>% 
+  add_header_above(c(" ", " ", "coins value" = 2, "wallet weight" = 2,
+                     "wallet value" = 2, "profit" = 2), align = "r")
+```
+</div>
+
+<div class="footer">`r paste0(greyspan, format(Sys.time(), "%d-%m-%Y at %H:%M"), "</span>")`</div>
+

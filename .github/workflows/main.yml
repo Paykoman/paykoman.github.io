@@ -28,11 +28,7 @@ jobs:
     # Set-up R
     - name: Install packages
       run: |
-        R -e 'install.packages("rmarkdown")'
-        R -e 'install.packages("kableExtra")'
-        R -e 'install.packages("data.table")'
-        R -e 'install.packages("magrittr")'
-        R -e 'install.packages("RJSONIO")'
+        R -e 'install.packages(c("rmarkdown", "kableExtra", "data.table", "magrittr", "RJSONIO"))'
     # Run R script
     - name: Build
       run: Rscript wallet_build.R

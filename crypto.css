@@ -1,0 +1,90 @@
+body {
+    /* background: #ECEFF1; */
+    background: #e8f1f5;
+}
+
+h1 {
+    display: none;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none !important;
+    color: #A8A8A8 !important;
+}
+
+a:hover {
+    color: #616eb6 !important;
+}
+
+.main-container {
+    max-width: 1050px !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 30px;
+    padding-bottom: 10px;
+    background: white;
+}
+
+.visible {
+    display: block;
+}
+
+.invisible {
+    display: none;
+}
+
+h1 {
+    text-align: center;
+    font-size: 25px !important;
+    margin-bottom: 50px !important;
+    color: #780505;
+}
+
+h2 {
+    font-size: 20px;
+    color: #1874CD;
+    margin-top: 20px !important;
+}
+
+h3 {
+    font-size: 16px;
+    color: #0080af;
+}
+
+button {
+    color: #444444;
+    background: #F3F3F3;
+    border: 1px #DADADA solid;
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 9pt;
+    outline: none;
+    position: absolute;
+    top: 100px;
+}
+
+button:hover {
+    border: 1px #C6C6C6 solid;
+    box-shadow: 1px 1px 1px #EAEAEA;
+    color: #333333;
+    background: #F7F7F7;
+}
+
+button:active {
+    box-shadow: inset 1px 1px 1px #DFDFDF;   
+}
+
+.footer{ 
+    position: relative;     
+    text-align: right;    
+    bottom: 100%; 
+    width: 100%;
+}
+
+.table-striped > tbody > tr:hover { 
+    background-color: #e0efff !important;
+}
+

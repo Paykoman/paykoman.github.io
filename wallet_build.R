@@ -1,1 +1,1 @@
-rmarkdown::render('wallet.Rmd', output_file = 'wallets/mywallet.html')
+rmarkdown::render('mywallet.Rmd', output_file = 'wallets/mywallet.html')

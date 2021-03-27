@@ -284,5 +284,5 @@ WF_USD %>%
 ```
 </div>
 
-<div class="footer">`r paste0(greyspan, format(Sys.time(), "%d-%m-%Y at %H:%M"), "</span>")`</div>
+<div class="footer">`r paste0(greyspan, format(`attr<-`(Sys.time(),"tzone","CET"), "%d-%m-%Y at %H:%M"), "</span>")`</div>
 

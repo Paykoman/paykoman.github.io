@@ -489,7 +489,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">body {background: #e8f1f5;}h1 {display: none;}a:link, a:visited, a:hover, a:active {text-decoration: none !important;color: #A8A8A8 !important;}a:hover {color: #616eb6 !important;}.main-container {max-width: 1050px !important;margin-left: auto;margin-right: auto;margin-top: 30px;margin-bottom: 30px;padding: 30px;padding-bottom: 10px;background: white;}.visible {display: block;}.invisible {display: none;}h1 {text-align: center;font-size: 25px !important;margin-bottom: 50px !important;color: #780505;}h2 {font-size: 20px;color: #1874CD;margin-top: 20px !important;}h3 {font-size: 16px;color: #0080af;}button {color: #444444;background: #F3F3F3;border: 1px #DADADA solid;padding: 5px 10px;border-radius: 2px;font-weight: bold;font-size: 9pt;outline: none;position: absolute;top: 100px;}button:hover {border: 1px #C6C6C6 solid;box-shadow: 1px 1px 1px #EAEAEA;color: #333333;background: #F7F7F7;}button:active {box-shadow: inset 1px 1px 1px #DFDFDF; }.footer{ position: relative; text-align: right; bottom: 100%; width: 100%;}.table-striped > tbody > tr:hover { background-color: #e0efff !important;}</style>
+<style type="text/css">body {background: #e8f1f5;}h1 {display: none;}a:link, a:visited, a:hover, a:active {text-decoration: none !important;color: #A8A8A8 !important;}a:hover {color: #616eb6 !important;}.main-container {max-width: 1050px !important;margin-left: auto;margin-right: auto;margin-top: 30px;margin-bottom: 30px;padding: 30px;padding-bottom: 10px;background: white;}.visible {display: block;}.invisible {display: none;}h1 {text-align: center;font-size: 25px !important;margin-bottom: 50px !important;color: #780505;}h2 {font-size: 20px;color: #1874CD;margin-top: 20px !important;}h3 {font-size: 16px;color: #0080af;}button {color: #444444;background: #F3F3F3;border: 1px #DADADA solid;padding: 5px 10px;border-radius: 2px;font-weight: bold;font-size: 9pt;outline: none;position: absolute;top: 100px;}button:hover {border: 1px #C6C6C6 solid;box-shadow: 1px 1px 1px #EAEAEA;color: #333333;background: #F7F7F7;}button:active {box-shadow: inset 1px 1px 1px #DFDFDF; }.footer{ position: relative; text-align: right; bottom: 100%; width: 100%;}.table-striped > tbody > tr:hover { background-color: #e0efff !important;}.table {margin-bottom: 0px !important;}</style>
 
 
 
@@ -612,6 +612,9 @@ $(document).ready(function(){
 $("button").click(function(){
 $(".visible, .invisible").toggleClass("visible invisible");
 });
+setTimeout(function(){
+window.location.reload(1);
+}, 60*1000*5);
 });
 </script>
 <div class="visible">
@@ -693,19 +696,19 @@ rate
 4%
 </td>
 <td style="text-align:right;">
-10%
+11%
 </td>
 <td style="text-align:right;">
 168
 </td>
 <td style="text-align:right;">
-497
+501
 </td>
 <td style="text-align:right;">
-<span style="color: #228B22 !important;">329</span>
+<span style="color: #228B22 !important;">333</span>
 </td>
 <td style="text-align:right;">
-<span style="color: #228B22 !important;">196%</span>
+<span style="color: #228B22 !important;">199%</span>
 </td>
 </tr>
 <tr>
@@ -719,7 +722,7 @@ rate
 41740
 </td>
 <td style="text-align:right;">
-47708
+47719
 </td>
 <td style="text-align:right;">
 31%
@@ -731,10 +734,10 @@ rate
 1346
 </td>
 <td style="text-align:right;">
-1538
+1539
 </td>
 <td style="text-align:right;">
-<span style="color: #228B22 !important;">192</span>
+<span style="color: #228B22 !important;">193</span>
 </td>
 <td style="text-align:right;">
 <span style="color: #228B22 !important;">14%</span>
@@ -783,7 +786,7 @@ rate
 0.96
 </td>
 <td style="text-align:right;">
-1.02
+1.01
 </td>
 <td style="text-align:right;">
 22%
@@ -795,13 +798,13 @@ rate
 924
 </td>
 <td style="text-align:right;">
-985
+978
 </td>
 <td style="text-align:right;">
-<span style="color: #228B22 !important;">61</span>
+<span style="color: #228B22 !important;">54</span>
 </td>
 <td style="text-align:right;">
-<span style="color: #228B22 !important;">7%</span>
+<span style="color: #228B22 !important;">6%</span>
 </td>
 </tr>
 <tr>
@@ -827,13 +830,13 @@ rate
 84
 </td>
 <td style="text-align:right;">
-82
+83
 </td>
 <td style="text-align:right;">
-<span style="color: #CD2626 !important;">-2</span>
+<span style="color: #CD2626 !important;">-1</span>
 </td>
 <td style="text-align:right;">
-<span style="color: #CD2626 !important;">-2%</span>
+<span style="color: #CD2626 !important;">-1%</span>
 </td>
 </tr>
 <tr>
@@ -847,7 +850,7 @@ rate
 333
 </td>
 <td style="text-align:right;">
-294
+293
 </td>
 <td style="text-align:right;">
 2%
@@ -891,13 +894,13 @@ rate
 168
 </td>
 <td style="text-align:right;">
-151
+150
 </td>
 <td style="text-align:right;">
-<span style="color: #CD2626 !important;">-17</span>
+<span style="color: #CD2626 !important;">-18</span>
 </td>
 <td style="text-align:right;">
-<span style="color: #CD2626 !important;">-10%</span>
+<span style="color: #CD2626 !important;">-11%</span>
 </td>
 </tr>
 <tr>
@@ -943,7 +946,7 @@ rate
 395
 </td>
 <td style="text-align:right;">
-311
+313
 </td>
 <td style="text-align:right;">
 4%
@@ -955,10 +958,10 @@ rate
 168
 </td>
 <td style="text-align:right;">
-132
+133
 </td>
 <td style="text-align:right;">
-<span style="color: #CD2626 !important;">-36</span>
+<span style="color: #CD2626 !important;">-35</span>
 </td>
 <td style="text-align:right;">
 <span style="color: #CD2626 !important;">-21%</span>
@@ -975,7 +978,7 @@ rate
 5.05
 </td>
 <td style="text-align:right;">
-4.22
+4.24
 </td>
 <td style="text-align:right;">
 13%
@@ -987,13 +990,13 @@ rate
 536
 </td>
 <td style="text-align:right;">
-447
+449
 </td>
 <td style="text-align:right;">
-<span style="color: #CD2626 !important;">-89</span>
+<span style="color: #CD2626 !important;">-87</span>
 </td>
 <td style="text-align:right;">
-<span style="color: #CD2626 !important;">-17%</span>
+<span style="color: #CD2626 !important;">-16%</span>
 </td>
 </tr>
 <tr>
@@ -1110,19 +1113,19 @@ rate
 4%
 </td>
 <td style="text-align:right;">
-10%
+11%
 </td>
 <td style="text-align:right;">
 198
 </td>
 <td style="text-align:right;">
-588
+592
 </td>
 <td style="text-align:right;">
-<span style="color: #228B22 !important;">389</span>
+<span style="color: #228B22 !important;">394</span>
 </td>
 <td style="text-align:right;">
-<span style="color: #228B22 !important;">196%</span>
+<span style="color: #228B22 !important;">199%</span>
 </td>
 </tr>
 <tr>
@@ -1136,7 +1139,7 @@ rate
 49355
 </td>
 <td style="text-align:right;">
-56413
+56425
 </td>
 <td style="text-align:right;">
 31%
@@ -1168,7 +1171,7 @@ rate
 1577
 </td>
 <td style="text-align:right;">
-1721
+1722
 </td>
 <td style="text-align:right;">
 16%
@@ -1180,7 +1183,7 @@ rate
 795
 </td>
 <td style="text-align:right;">
-867
+868
 </td>
 <td style="text-align:right;">
 <span style="color: #228B22 !important;">73</span>
@@ -1200,7 +1203,7 @@ rate
 1.13
 </td>
 <td style="text-align:right;">
-1.21
+1.20
 </td>
 <td style="text-align:right;">
 22%
@@ -1212,13 +1215,13 @@ rate
 1093
 </td>
 <td style="text-align:right;">
-1165
+1156
 </td>
 <td style="text-align:right;">
-<span style="color: #228B22 !important;">72</span>
+<span style="color: #228B22 !important;">64</span>
 </td>
 <td style="text-align:right;">
-<span style="color: #228B22 !important;">7%</span>
+<span style="color: #228B22 !important;">6%</span>
 </td>
 </tr>
 <tr>
@@ -1244,13 +1247,13 @@ rate
 99
 </td>
 <td style="text-align:right;">
-97
+98
 </td>
 <td style="text-align:right;">
-<span style="color: #CD2626 !important;">-2</span>
+<span style="color: #CD2626 !important;">-1</span>
 </td>
 <td style="text-align:right;">
-<span style="color: #CD2626 !important;">-2%</span>
+<span style="color: #CD2626 !important;">-1%</span>
 </td>
 </tr>
 <tr>
@@ -1264,7 +1267,7 @@ rate
 394
 </td>
 <td style="text-align:right;">
-348
+346
 </td>
 <td style="text-align:right;">
 2%
@@ -1276,7 +1279,7 @@ rate
 99
 </td>
 <td style="text-align:right;">
-88
+87
 </td>
 <td style="text-align:right;">
 <span style="color: #CD2626 !important;">-12</span>
@@ -1308,13 +1311,13 @@ rate
 199
 </td>
 <td style="text-align:right;">
-178
+177
 </td>
 <td style="text-align:right;">
 <span style="color: #CD2626 !important;">-21</span>
 </td>
 <td style="text-align:right;">
-<span style="color: #CD2626 !important;">-10%</span>
+<span style="color: #CD2626 !important;">-11%</span>
 </td>
 </tr>
 <tr>
@@ -1360,7 +1363,7 @@ rate
 467
 </td>
 <td style="text-align:right;">
-367
+370
 </td>
 <td style="text-align:right;">
 4%
@@ -1372,10 +1375,10 @@ rate
 199
 </td>
 <td style="text-align:right;">
-156
+157
 </td>
 <td style="text-align:right;">
-<span style="color: #CD2626 !important;">-42</span>
+<span style="color: #CD2626 !important;">-41</span>
 </td>
 <td style="text-align:right;">
 <span style="color: #CD2626 !important;">-21%</span>
@@ -1392,7 +1395,7 @@ rate
 5.98
 </td>
 <td style="text-align:right;">
-4.98
+5.01
 </td>
 <td style="text-align:right;">
 13%
@@ -1404,13 +1407,13 @@ rate
 633
 </td>
 <td style="text-align:right;">
-528
+531
 </td>
 <td style="text-align:right;">
-<span style="color: #CD2626 !important;">-105</span>
+<span style="color: #CD2626 !important;">-102</span>
 </td>
 <td style="text-align:right;">
-<span style="color: #CD2626 !important;">-17%</span>
+<span style="color: #CD2626 !important;">-16%</span>
 </td>
 </tr>
 <tr>
@@ -1436,7 +1439,7 @@ rate
 <b>5055$</b>
 </td>
 <td style="text-align:right;">
-<b>5604$</b>
+<b>5605$</b>
 </td>
 <td style="text-align:right;">
 <b><span style="color: #228B22 !important;">550$</span></b>
@@ -1449,7 +1452,7 @@ rate
 </table>
 </div>
 <div class="footer">
-<span style="color: #A8A8A8 !important;">28-03-2021 at 10:55</span>
+<span style="color: #A8A8A8 !important;">Updated on 28-03-2021 at 11:55</span>
 </div>
 
 

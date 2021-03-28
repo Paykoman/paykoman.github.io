@@ -26,7 +26,7 @@ library(RJSONIO)
 # https://github.com/amrrs/coinmarketcapr
 
 # Read wallet
-if (params$user == "mathias") W_EUR <- fread("wallet.csv")
+if (params$user == "mathias") W_EUR <- fread("wallet_mathias.csv")
 if (params$user == "martin") W_EUR <- fread("wallet_martin.csv")
 if (params$user == "margaux") W_EUR <- fread("wallet_margaux.csv")
 

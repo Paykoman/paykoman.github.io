@@ -42,8 +42,9 @@ jobs:
         
     - name: Build
       run: |
-        rmarkdown::render('mywallet.Rmd', output_file = 'wallets/mywallet.html', params = list(user = "mat"))
-        rmarkdown::render('mywallet.Rmd', output_file = 'wallets/mywallet_martin.html', params = list(user = "mart"))
+        rmarkdown::render('mywallet.Rmd', output_file = 'wallets/mywallet:mathias.html', params = list(user = "mathias"))
+        rmarkdown::render('mywallet.Rmd', output_file = 'wallets/mywallet_martin.html', params = list(user = "martin"))
+        rmarkdown::render('mywallet.Rmd', output_file = 'wallets/mywallet_margaux.html', params = list(user = "margaux"))
       shell: Rscript {0}
       
  # Add new files in data folder, commit along with other modified files, push

@@ -40,6 +40,9 @@ jobs:
         R -e 'install.packages(c("rmarkdown", "kableExtra", "data.table", "magrittr", "RJSONIO"))'
         
     - name: Build
+      env:
+        # set as environment variables (CMC secret key)
+        CMC_SECRET: ${{ secrets.CMC_API_KEY }}
       run: Rscript wallet_build.R
       
  # Add new files in data folder, commit along with other modified files, push

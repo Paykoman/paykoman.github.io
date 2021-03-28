@@ -26,7 +26,9 @@ library(RJSONIO)
 # https://github.com/amrrs/coinmarketcapr
 
 # Read wallet
-W_EUR <- fread("wallet.csv")
+if (params$user == "mat") W_EUR <- fread("wallet.csv")
+if (params$user == "mart") W_EUR <- fread("wallet_martin.csv")
+if (params$user == "marg") W_EUR <- fread("wallet_margaux.csv")
 
 ```
 

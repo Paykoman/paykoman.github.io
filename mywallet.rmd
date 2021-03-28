@@ -290,6 +290,6 @@ WF_USD %>%
 
 ```{r}
 currentTime <- `attr<-`(Sys.time(),"tzone","CET")
-currentTime <- format(currentTime, "%d-%m-%Y at %H:%M")
+currentTime <- format(currentTime, "Updated on %d-%m-%Y at %H:%M")
 ```
 <div class="footer">`r paste0(greyspan, currentTime, "</span>")`</div>

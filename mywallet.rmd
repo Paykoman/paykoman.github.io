@@ -8,7 +8,7 @@ output:
 editor_options: 
   chunk_output_type: console
 params:
-  apikey: ""
+  cmc_apikey: ""
 ---
 
 ```{r setup, include=FALSE}
@@ -44,7 +44,7 @@ greyspan <- "<span style='color: #A8A8A8 !important;'>"
 
 
 # URL-API ------------------------------------------------------------------------------------------
-apikey <- paste0("&CMC_PRO_API_KEY=", params$apikey)
+apikey <- paste0("&CMC_PRO_API_KEY=", params$cmc_apikey)
 cmcURL <- "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?"
 
 

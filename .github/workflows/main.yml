@@ -42,7 +42,7 @@ jobs:
         
     - name: Build
       run: |
-        rmarkdown::render('mywallet.Rmd', output_file = 'wallets/mywallet.html', params = list(cmc_apikey = apikey))
+        rmarkdown::render('mywallet.Rmd', output_file = 'wallets/mywallet.html', params = list(user = "hello"))
       shell: Rscript {0}
       
  # Add new files in data folder, commit along with other modified files, push

@@ -41,11 +41,7 @@ jobs:
       shell: Rscript {0}
         
     - name: Build
-      env:
-        # set as environment variables (CMC secret key)
-        CMC_API_KEY: ${{ secrets.CMC_API_KEY }}
       run: |
-        apikey = Sys.getenv("CMC_API_KEY")
         rmarkdown::render('mywallet.Rmd', output_file = 'wallets/mywallet.html', params = list(cmc_apikey = apikey))
       shell: Rscript {0}
       

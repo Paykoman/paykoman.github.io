@@ -78,9 +78,8 @@ button:active {
 }
 
 .footer{ 
-    position: absolute;
-    top: 75px;
-    /* text-align: right;     */
+    position: relative;     
+    text-align: right;    
     bottom: 100%; 
     width: 100%;
 }
@@ -89,3 +88,6 @@ button:active {
     background-color: #e0efff !important;
 }
 
+.table {
+    margin-bottom: 0px !important;
+}

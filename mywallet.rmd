@@ -42,7 +42,8 @@ greyspan <- "<span style='color: #A8A8A8 !important;'>"
 
 
 # URL-API ------------------------------------------------------------------------------------------
-apikey <- "&CMC_PRO_API_KEY=6f8eb99f-1de9-4566-ae06-b423c3d9fe15"
+apikey <- Sys.getenv("CMC_SECRET")
+apikey <- paste0("&CMC_PRO_API_KEY=", apikey)
 cmcURL <- "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?"
 
 

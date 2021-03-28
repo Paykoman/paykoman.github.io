@@ -1,11 +1,16 @@
 ﻿coin,symbol,hold,wallet_initial,where
-Bitcoin,BTC,0.03224125,1345.74,Binance
-Ethereum,ETH,0.50393000,672.00,Binance
-Cardano,ADA,963.43432246,923.96,Binance
-Theta Network,THETA,46.30000000,167.73,Binance
-Voyager Token,VGX,106.00000000,535.71,Binance
-Aave,AAVE,0.25200000,83.94,Binance
-Uniswap,UNI,3.40000000,83.79,Binance
-Polkadot,DOT,5.38518911,168.00,Binance
-Compound,COMP,0.42511,168.00,Binance
-Synthetix Network Token,SNX,6.917,125.99076,Binance
+Bitcoin,BTC,0.032323137,1349.655823,binance.com
+Ethereum,ETH,0.69545,956.1806843,binance.com
+Cardano,ADA,962.8343225,923.9618052,binance.com
+Voyager Token,BQX,116,571.4417488,binance.com
+Polkadot,DOT,5.38518911,168,binance.com
+Theta Token,THETA,46.3,167.7310908,binance.com
+Compound,COMP,0.42511,168,binance.com
+Synthetix Network Token,SNX,6.91700000,125.99,binance.com
+Aave,AAVE,0.25200000,83.94,binance.com
+Uniswap,UNI,3.40000000,83.79,binance.com
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,

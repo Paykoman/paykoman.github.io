@@ -261,6 +261,9 @@ $(document).ready(function(){
 $("button").click(function(){
 $(".visible, .invisible").toggleClass("visible invisible");
 });
+setTimeout(function(){
+window.location.reload(1);
+}, 60*1000*5);
 });
 </script>
 

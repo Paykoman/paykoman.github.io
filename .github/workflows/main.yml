@@ -44,7 +44,8 @@ jobs:
         # set as environment variables (CMC secret key)
         CMC_SECRET: ${{ secrets.CMC_API_KEY }}
       run: |
-        R -e "rmarkdown::render('mywallet.Rmd', output_file = 'wallets/mywallet.html')"
+        R -e "apikey <- Sys.getenv('CMC_SECRET')"
+        R -e "rmarkdown::render('mywallet.Rmd', output_file = 'wallets/mywallet.html', params = list(cmc_apikey = apikey)"
       
  # Add new files in data folder, commit along with other modified files, push
     - name: Commit files

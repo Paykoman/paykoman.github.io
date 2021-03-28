@@ -8,7 +8,7 @@ output:
 editor_options: 
   chunk_output_type: console
 params:
-  user: "mat"
+  user: ""
 ---
 
 ```{r setup, include=FALSE}
@@ -26,9 +26,9 @@ library(RJSONIO)
 # https://github.com/amrrs/coinmarketcapr
 
 # Read wallet
-if (params$user == "mat") W_EUR <- fread("wallet.csv")
-if (params$user == "mart") W_EUR <- fread("wallet_martin.csv")
-if (params$user == "marg") W_EUR <- fread("wallet_margaux.csv")
+if (params$user == "mathias") W_EUR <- fread("wallet.csv")
+if (params$user == "martin") W_EUR <- fread("wallet_martin.csv")
+if (params$user == "margaux") W_EUR <- fread("wallet_margaux.csv")
 
 ```
 

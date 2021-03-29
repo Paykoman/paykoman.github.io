@@ -75,7 +75,7 @@ prices <- sapply(W_EUR$symbol, function(coin) {
 
 
 # USD to EUR exchange rate (according to CMC)
-URL2 <- paste0(cmcURL, "convert=USD&symbol=", W_EUR$symbol[1], apikey)
+URL2 <- paste0(cmcURL, "convert=USD&symbol=", js[[1]]$symbol, apikey)
 URL2 <- gsub(" ", "", URL2)
 
 js2 <- fromJSON(URL2)$data

@@ -75,13 +75,13 @@ prices <- sapply(W_EUR$symbol, function(coin) {
 
 
 # USD to EUR exchange rate (according to CMC)
-URL2 <- paste0(cmcURL, "convert=USD&symbol=BTC", apikey)
+URL2 <- paste0(cmcURL, "convert=USD&symbol=", W_EUR$symbol[1], apikey)
 URL2 <- gsub(" ", "", URL2)
 
 js2 <- fromJSON(URL2)$data
 
-BTC_USD <- js2$BTC$quote$USD$price
-BTC_EUR <- js$BTC$quote$EUR$price
+BTC_EUR <- js[[1]]$quote$EUR$price
+BTC_USD <- js2[[1]]$quote$USD$price
 
 USDEUR <- BTC_EUR / BTC_USD # 1 EUR = 1 USDEUR
 

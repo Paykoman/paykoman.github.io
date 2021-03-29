@@ -29,6 +29,7 @@ library(RJSONIO)
 if (params$user == "mathias") W_EUR <- fread("wallet_mathias.csv")
 if (params$user == "martin") W_EUR <- fread("wallet_martin.csv")
 if (params$user == "margaux") W_EUR <- fread("wallet_margaux.csv")
+if (params$user == "sebastian") W_EUR <- fread("wallet_sebastian.csv")
 
 ```
 

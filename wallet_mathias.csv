@@ -1,4 +1,4 @@
-coin,symbol,hold,wallet_initial,where
+﻿coin,symbol,hold,wallet_initial,where
 Bitcoin,BTC,0.59714161,1641.21,Ledger
 Bitcoin cash,BCH,0.35507444,0.00,Ledger
 Litecoin,LTC,2.58040686,125.00,Ledger
@@ -16,3 +16,4 @@ Compound,COMP,0.44692056,100.00,bitladon.com
 Aave,AAVE,1.03672000,250.00,Lending in Celsius Network App [bought on kraken.com]
 Uniswap,UNI,20.35638000,250.00,kraken.com
 Chiliz,CHZ,1018.35063000,500.00,binance.com
+Ripple,XRP,606.37733,300.00,kraken.com

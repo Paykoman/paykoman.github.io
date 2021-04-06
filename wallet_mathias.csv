@@ -1,19 +1,20 @@
 ﻿coin,symbol,hold,wallet_initial,where
 Bitcoin,BTC,0.59714161,1641.21,Ledger
-Bitcoin cash,BCH,0.35507444,0.00,Ledger
-Litecoin,LTC,2.58040686,125.00,Ledger
-Monero,XMR,2.22945000,250.00,kraken.com
-Ethereum,ETH,3.42522873,810.00,Ledger
-Cardano,ADA,6004.49500000,2000.00,Daedalus wallet connected via Ledger [staked]
-Chainlink,LINK,15.84736000,200.00,Lending in Celsius Network App [bought on kraken.com]
-Polkadot,DOT,29.36621037,200.00,kraken.com
-Stellar,XLM,195.41337000,50.00,Lending in Celsius Network App [bought on kraken.com]
-Theta Network,THETA,356.48906232,825.00,bitladon.com
-Celsius Network Token,CEL,17.21247184,75.00,bitladon.com [stacked]
-Voyager Token,VGX,935.48682589,2000.00,bitladon.com
-Synthetix Network Token,SNX,6.66846533,100.00,bitladon.com
-Compound,COMP,0.44692056,100.00,bitladon.com
-Aave,AAVE,1.03672000,250.00,Lending in Celsius Network App [bought on kraken.com]
-Uniswap,UNI,20.35638000,250.00,kraken.com
-Chiliz,CHZ,1018.35063000,500.00,binance.com
-Ripple,XRP,606.37733,300.00,kraken.com
+Bitcoin cash,BCH,0.35507444,0,Ledger
+Litecoin,LTC,2.58040686,125,Ledger
+Monero,XMR,2.22945,250,kraken.com
+Ethereum,ETH,3.42522873,810,Ledger
+Cardano,ADA,6004.495,2000,Daedalus wallet connected via Ledger [staked]
+Chainlink,LINK,15.84736,200,Lending in Celsius Network App [bought on kraken.com]
+Polkadot,DOT,29.36621037,200,kraken.com
+Stellar,XLM,195.41337,50,Lending in Celsius Network App [bought on kraken.com]
+Theta Network,THETA,356.4890623,825,bitladon.com
+Celsius Network Token,CEL,17.21247184,75,bitladon.com [stacked]
+Voyager Token,VGX,935.4868259,2000,bitladon.com
+Synthetix Network Token,SNX,6.66846533,100,bitladon.com
+Compound,COMP,0.44692056,100,bitladon.com
+Aave,AAVE,1.03672,250,Lending in Celsius Network App [bought on kraken.com]
+Uniswap,UNI,20.35638,250,kraken.com
+Chiliz,CHZ,1018.35063,500,binance.com
+Ripple,XRP,606.37733,300,kraken.com
+Elrond,EGLD,1.55074,250,binance.com

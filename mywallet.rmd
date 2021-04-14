@@ -31,6 +31,7 @@ if (params$user == "martin") W_EUR <- fread("wallet_martin.csv")
 if (params$user == "margaux") W_EUR <- fread("wallet_margaux.csv")
 if (params$user == "sebastian") W_EUR <- fread("wallet_sebastian.csv")
 if (params$user == "claudine") W_EUR <- fread("wallet_claudine.csv")
+if (params$user == "total") W_EUR <- fread("wallet_total.csv")
 ```
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

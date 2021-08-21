@@ -1,7 +1,7 @@
-﻿coin,symbol,hold,wallet_initial,where
-Bitcoin,BTC,0.0281,1402.1,Kraken.com
-Ethereum,ETH,0.49911901,789.87,Kraken.com
-Cardano,ADA,678,598.57569,Kraken.com
-Polkadot,DOT,13.5,400.4451,Kraken.com
-Uniswap,UNI,15.6,399.282,Kraken.com
-Aave,AAVE,1.29,399.34,Kraken.com
+﻿coin,symbol,coin_id_geckor,hold,wallet_initial,where
+Bitcoin,BTC,bitcoin,0.0281,1402.1,Kraken.com
+Ethereum,ETH,ethereum,0.49911901,789.87,Kraken.com
+Cardano,ADA,cardano,678,598.57569,Kraken.com
+Polkadot,DOT,polkadot,13.5,400.4451,Kraken.com
+Uniswap,UNI,uniswap,15.6,399.282,Kraken.com
+Aave,AAVE,aave,1.29,399.34,Kraken.com

@@ -1,5 +1,5 @@
-﻿coin,symbol,hold,wallet_initial,where
-Bitcoin,BTC,0.014249,677.8548,Binance.com
-Ethereum,ETH,0.26541,487.0992,Binance.com
-Cardano,ADA,466.5,466.1570676,Binance.com
-Voyager Token,VGX,91,306.967992,Binance.com
+﻿coin,symbol,coin_id_geckor,hold,wallet_initial,where
+Bitcoin,BTC,bitcoin,0.014249,677.8548,Binance.com
+Ethereum,ETH,ethereum,0.26541,487.0992,Binance.com
+Cardano,ADA,cardano,466.5,466.1570676,Binance.com
+Voyager Token,VGX,ethos,91,306.967992,Binance.com

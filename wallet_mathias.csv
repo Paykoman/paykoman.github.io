@@ -1,20 +1,20 @@
-﻿coin,symbol,hold,wallet_initial,where
-Bitcoin,BTC,0.59714161,1641.21,Ledger
-Bitcoin cash,BCH,0.35507444,0.00,Ledger
-Litecoin,LTC,2.58040686,125.00,Ledger
-Monero,XMR,2.22945000,250.00,kraken.com
-Ethereum,ETH,3.42522873,810.00,Ledger
-Cardano,ADA,6004.49500000,2000.00,Daedalus wallet connected via Ledger [staked]
-Chainlink,LINK,38.38981000,600.00,Celcius App / Kraken.com
-Polkadot,DOT,36.77185578,375.00,kraken.com
-Stellar,XLM,195.41337000,50.00,Celcius App
-Theta Network,THETA,356.48906232,825.00,bitladon.com
-Celsius Network Token,CEL,17.21247184,75.00,bitladon.com [stacked]
-Voyager Token,VGX,1730.33300000,3500.00,"Bought on bitladon.com, staked in https://vgx-swap.investvoyager.com via Metamask"
-Synthetix Network Token,SNX,6.66846533,100.00,bitladon.com
-Compound,COMP,0.44692056,100.00,bitladon.com
-Aave,AAVE,1.03672000,250.00,Celcius App
-Uniswap,UNI,20.35638000,250.00,kraken.com
-Chiliz,CHZ,1018.35063000,500.00,binance.com
-Ripple,XRP,606.37733,300.00,kraken.com
-Elrond,EGLD,1.55074,250,binance.com
+﻿coin,symbol,coin_id_geckor,hold,wallet_initial,where
+Bitcoin,BTC,bitcoin,0.59714161,1641.21,Ledger
+Bitcoin cash,BCH,bitcoin-cash,0.35507444,0.00,Ledger
+Litecoin,LTC,litecoin,2.58040686,125.00,Ledger
+Monero,XMR,monero,2.22945000,250.00,kraken.com
+Ethereum,ETH,ethereum,3.42522873,810.00,Ledger
+Cardano,ADA,cardano,6004.49500000,2000.00,Daedalus wallet connected via Ledger [staked]
+Chainlink,LINK,chainlink,38.38981000,600.00,Celcius App / Kraken.com
+Polkadot,DOT,polkadot,36.77185578,375.00,kraken.com
+Stellar,XLM,stellar,195.41337000,50.00,Celcius App
+Theta Network,THETA,theta-token,356.48906232,825.00,bitladon.com
+Celsius Network Token,CEL,celsius-degree-token,17.21247184,75.00,bitladon.com [stacked]
+Voyager Token,VGX,ethos,1730.33300000,3500.00,"Bought on bitladon.com, staked in https://vgx-swap.investvoyager.com via Metamask"
+Synthetix Network Token,SNX,havven,6.66846533,100.00,bitladon.com
+Compound,COMP,compound-governance-token,0.44692056,100.00,bitladon.com
+Aave,AAVE,aave,1.03672000,250.00,Celcius App
+Uniswap,UNI,uniswap,20.35638000,250.00,kraken.com
+Chiliz,CHZ,chiliz,1018.35063000,500.00,binance.com
+Ripple,XRP,ripple,606.37733,300.00,kraken.com
+Elrond,EGLD,elrond-erd-2,1.55074,250,binance.com

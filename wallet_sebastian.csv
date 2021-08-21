@@ -1,2 +1,2 @@
-﻿coin,symbol,hold,wallet_initial,where
-Ethereum,ETH,0.44377535,673.4193157,binance.com
+﻿coin,symbol,coin_id_geckor,hold,wallet_initial,where
+Ethereum,ETH,ethereum,0.44377535,673.4193157,binance.com

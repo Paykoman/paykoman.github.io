@@ -39,7 +39,7 @@ jobs:
     - name: Install packages
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
-        install.packages(c("rmarkdown", "kableExtra", "data.table", "magrittr", "RJSONIO"))
+        install.packages(c("rmarkdown", "kableExtra", "data.table", "magrittr", "geckor"))
       shell: Rscript {0}
         
     - name: Build

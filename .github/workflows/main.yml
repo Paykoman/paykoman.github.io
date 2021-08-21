@@ -28,19 +28,12 @@ jobs:
     - uses: r-lib/actions/setup-pandoc@v1
 
     # When adding a new package: Remove this section and run the code first, then add this section again
-    - name: Cache R packages
-      id: cache
-      uses: actions/cache@v2
-      with:
-        path: ${{ env.R_LIBS_USER }}
-        key: ${{ runner.os }}-shinydoc
-        restore-keys: |
-          ${{ runner.os }}-
+
           
     - name: Install packages
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
-        install.packages(c("rmarkdown", "kableExtra", "data.table", "magrittr", "geckor"))
+        install.packages(c("rmarkdown", "kableExtra", "data.table", "magrittr", "geckor", "rgdal"))
       shell: Rscript {0}
         
     - name: Build

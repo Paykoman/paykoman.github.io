@@ -24,7 +24,7 @@ jobs:
     - uses: actions/checkout@master
     - uses: r-lib/actions/setup-r@master
       with:
-         r-version: '4.0.4'
+         r-version: '4.1.1'
     - uses: r-lib/actions/setup-pandoc@v1
 
     - name: Cache R packages

@@ -7,6 +7,8 @@ output:
         self_contained: true
 editor_options: 
   chunk_output_type: console
+params:
+  user: ""
 ---
 
 ```{r setup, include=FALSE}
